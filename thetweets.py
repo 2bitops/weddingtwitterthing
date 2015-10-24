@@ -25,4 +25,13 @@ class thetweets:
         return "%s" % self.api.VerifyCredentials()
 
     def grabATweet(self):
-        return "%s" % self.api.GetSearch(term=self.hashtag)
+        tweets = self.api.GetSearch(term=self.hashtag,
+                                    include_entities=True)
+        twStr = []
+        for tweet in tweets:
+            if tweet.media:
+                twStr.append(tweet.media[0]['media_url'])
+
+        self.logger.debug("images: %s" % twStr)
+
+        return twStr

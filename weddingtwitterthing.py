@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 import logging
 import sys
 import thetweets
@@ -23,7 +24,9 @@ tw = thetweets.thetweets()
 @app.route('/')
 def hello_world():
     global tw
-    return tw.grabATweet()
+    images = tw.grabATweet()
+    logging.getLogger().debug("images %s" % images)
+    return render_template('singleimg.html', image=images[0])
 
 if __name__ == '__main__':
     app.run(debug=True)
