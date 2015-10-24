@@ -2,4 +2,5 @@
 *.iml
 *.pyc
 *.log
+static/bower_components
 config-local.yml

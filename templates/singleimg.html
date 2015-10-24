@@ -1,8 +1,20 @@
 <!doctype html>
+<html>
+<head>
+    <script data-main="{{ url_for('static', filename='main.js') }}" src="{{ url_for('static', filename='require.js') }}"></script>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
 <title>Flaskr</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<body>
 <div class=page>
     <div class="twimg">
         <img src="{{image}}">
     </div>
 </div>
+<script>
+    requirejs(function( $ ) {
+        $('.twimg').imagefill();
+    });
+</script>
+</body>
+</html>

@@ -32,6 +32,10 @@ class thetweets:
             if tweet.media:
                 twStr.append(tweet.media[0]['media_url'])
 
-        self.logger.debug("images: %s" % twStr)
-
-        return twStr
+        if len(twStr) > 0:
+            self.lastImage = twStr[0]
+            self.logger.debug("images: %s" % twStr)
+            return twStr
+        else:
+            twStr.append(self.lastImage)
+            return twStr
